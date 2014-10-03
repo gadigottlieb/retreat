@@ -1,0 +1,12 @@
+$('.modal').hide();
+var activityList
+
+if ('<%= @activity.category %>' === 'play') {
+  activityList = $('.played').find('.trip-info-list');
+} else if ('<%= @activity.category %>' === 'stay') {
+  activityList = $('.stayed').find('.trip-info-list');
+} else if ('<%= @activity.category %>' === 'eat') {
+  activityList = $('.ate').find('.trip-info-list');
+}
+
+activityList.append('<%= j(render partial: "activities/activity", locals: {getaway: @activity.getaway, activity: @activity}) %>')

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RetreatApp</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= typekit_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <header id="top-bar">
+    <div class="container">
+      <a href="/"><div class="logo">Retreat</div></a>
+      <div class="navigation">
+        <ul>
+
+          <% if !current_user %>
+          <li>
+            <%= link_to 'Log In', login_path, id: 'login-link', remote: true %>
+          </li>
+            <% else %>
+          <li>
+            Hi, <%= link_to current_user.first_name, user_path(current_user) %> <span class="nav-space">|</span>
+          </li>
+          <li>
+            <%= link_to "My Feed", user_feed_path(current_user) %> <span class="nav-space">|</span>
+          </li>
+          <li>
+            <%= link_to 'My Getaways', user_path(current_user) %> <span class="nav-space">|</span>
+          </li>
+          <li>
+            <%= link_to 'Log a trip', new_getaway_path(current_user) %> <span class="nav-space">|</span>
+          </li>
+          <li>
+            <%= link_to 'Log Out', logout_path %>
+          </li>
+            <% end %>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <% if !current_user %>
+    <div class="modal">
+      <div id="user-auth-modal">
+      </div>
+
+      <div id="sign-up-modal">
+      </div>
+    </div>
+  <% end %>
+
+<%= yield %>
+
+</body>
+</html>

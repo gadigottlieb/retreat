@@ -1,0 +1,10 @@
+var activityModal = $('#activity-modal');
+
+activityModal.empty();
+activityModal.append('<button class="close">close</button>');
+
+<% @photos.each do |photo| %>
+  activityModal.append('<img src="<%= photo.photo.url %>">');
+<% end %>
+
+$('.modal').show();

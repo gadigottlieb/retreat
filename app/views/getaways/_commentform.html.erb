@@ -1,0 +1,4 @@
+<%= form_tag getaway_update_comment_path(getaway), method: :put, remote: true do %>
+  <%= text_area_tag :new_comment, nil, placeholder: 'What do you have to say?' %>
+  <%= submit_tag 'Add Comment' %>
+<% end %>

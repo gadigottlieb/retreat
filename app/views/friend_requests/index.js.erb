@@ -1,0 +1,16 @@
+var profileModal = $('#profile-modal');
+var friend_requests = '';
+
+profileModal.empty();
+profileModal.append('<button class="close">close</button>');
+
+<% @friend_requests.each do |friend_request| %>
+  friend_requests += '<%= j(render partial: "users/user", locals: {user: friend_request.sender}) %>';
+<% end %>
+
+if (!friend_requests) {
+  friend_requests = 'You don\'t have any friend requests';
+}
+
+profileModal.append(friend_requests);
+$('.modal').show();

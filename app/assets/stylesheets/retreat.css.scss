@@ -1,0 +1,819 @@
+$purple: #442953;
+$purple-light: #992356;
+$red: #ff3e4d;
+$dark-green: #29666f;
+$light-green: #00968f;
+$yellow-light: #f7e8a0;
+$white: #fff;
+$yellow-dark: #beb58a;
+
+img { max-width: 100%; }
+a { text-decoration: none }
+body {
+  font-family: "omnes-pro",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin yellow-button {
+  background-color: $yellow-light;
+  border: none;
+  padding: 10px;
+  color: $purple;
+}
+button {
+  @include yellow-button;
+}
+.edit-profile-button{
+  @include yellow-button;
+}
+
+.delete-profile-button{
+  @include yellow-button;
+}
+
+button:hover { opacity: .85; }
+
+h1, h2, h3, h4, h5 { font-weight: 200; }
+
+a {
+  transition: all 0.4s ease;
+}
+
+
+//::::::::::::::::::GRID::::::::::::::::::::::::::::::::
+
+.container {
+  width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_3_1_first,
+.grid_3_1,
+.grid_3_1_last {
+	display: inline;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.alpha {margin-left: 0;}
+.omega {margin-right: 0;}
+
+//:::::::::::::::4 COLUMN GRID::::::::::::::::::::::::::
+.container .grid_1 {width: 300px;}
+.container .grid_2 {width: 620px;}
+.container .grid_3 {width: 940px;}
+.container .grid_4 {width: 1260px;}
+
+//::::::::::::::::3 COLUMN GRID:::::::::::::::::::::::::
+.container .grid_3_1_first {width: 420px;}
+.container .grid_3_1 {width: 420px;}
+.container .grid_3_1_last {width: 420px;}
+
+
+
+//::::::::::::::::::TOP BAR:::::::::::::::::::::::::::::
+
+#top-bar {
+  background: $purple;
+  width: 100%;
+  float: left;
+  height: 50px;
+  padding: 20px 0 0 0;
+}
+
+.logo {
+  float: left;
+  font-family: "bree",sans-serif;
+  font-size: 28px;
+  color: $red;
+}
+
+.navigation {
+  position: absolute;
+  right: 0;
+  font-family: "omnes-pro",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0;
+}
+
+.navigation li {
+  color: $white;
+  float: left;
+}
+
+.nav-space {
+  padding: 0 10px;
+}
+
+.navigation a {
+  color: $red;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+  position: absolute;
+  z-index: 1000;
+}
+
+//::::::::::::::::::LOG-IN:::::::::::::::::::::::::::::
+
+#user-auth-modal, #sign-up-modal {
+  position: absolute;
+  top: 1%;
+  left: 33%;
+  z-index: 1000;
+  display:none;
+  width: 300px;
+  height: 200px;
+  padding: 60px;
+  margin: 100px auto;
+  background: $purple-light;
+}
+
+#sign-up-modal {
+  height: 370px;
+}
+
+button.close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: none;
+  background: none;
+  color: $white;
+}
+
+#user-auth-modal, #sign-up-modal {
+  margin: 80px 0 0 30px;
+}
+
+#user-auth-modal label, #sign-up-modal label, #profile-modal label, #activity-modal label {
+  color: #fff;
+  font-size: 16px;
+  padding: 5px;
+}
+
+#user-auth-modal input, #sign-up-modal input, #profile-modal input, #activity-modal input {
+  display: block;
+  padding: 10Fpx;
+  margin: 10px;
+  color: #999;
+  border: none;
+  width: 220px;
+}
+
+button.login-button {
+  background-color: $yellow-light;
+  border: none;
+  padding: 10px;
+  margin-left: 10px;
+  color: $purple;
+  float: left;
+}
+
+button.login-button:hover {
+  opacity: .85;
+}
+
+.modal h1 {
+  color: $white;
+  font-weight: 200;
+  margin: 0;
+}
+
+.modal .form-submit {
+  background-color: $yellow-light;
+  color: $purple!important;
+  margin-top: 40px;
+}
+
+//::::::::::::::::::HOME PAGE:::::::::::::::::::::::::::::
+
+#welcome {
+  min-height: 800px;
+  background-color: rgba(255, 255, 255, 0.4);
+  background-image: image-url("hawaiinight.jpg");
+  background-size: cover;
+  width: 100%;
+  z-index: -1;
+  position: fixed;
+  top: 0;
+
+}
+
+.welcome-message {
+  font-size: 60px;
+  font-weight: 200;
+  color: #FFF;
+  text-align: center;
+  padding: 200px 100px 60px 100px;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
+}
+
+.welcome-subhead {
+  text-align: center;
+  font-size: 24px;
+  color: #FFF;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+.sign-up {
+  text-align: center;
+  padding: 20px;
+}
+
+.sign-up a {
+  color: $purple;
+  font-size: 60px;
+  font-weight: 200;
+  transition: all 0.4s ease;
+  background-color: rgba(247, 232, 160, 0.8);
+  padding: 0 50px 20px 50px;
+  border-radius: 50px;
+}
+
+.sign-up a:hover {
+  background-color: rgba(247, 232, 160, 1.0);
+  padding: 0 70px 20px 70px;
+}
+
+
+
+
+//::::::::::Feed Search Friends:::::::::::::::::::
+
+#feed-modal {
+  background-color: $yellow-light;
+  color: $purple!important;
+  margin-top: 40px;
+  position: center;
+  margin-left: 250px;
+  margin-right: 250px;
+}
+
+.name img {
+  width: 250px;
+  height: 250px;
+  border: 5px solid white;
+}
+.name {
+  text-align: center;
+  color: rgba(145, 27, 192, 0.84);
+}
+#button {
+  display: block;
+  text-align: center;
+}
+
+//::::::::::::::::::NEW GETAWAY:::::::::::::::::::::::::::::
+
+#departure-date-div, #comment-div {
+  display: none;
+}
+
+p#date-placeholder, p#comment-placeholder {
+  color: gray;
+}
+
+#new-getaway-modal {
+  position: absolute;
+  top: 1%;
+  left: 33%;
+  z-index: 1000;
+  display:none;
+  width: 300px;
+  height: 200px;
+  overflow: scroll;
+  padding: 60px;
+  margin: 100px auto;
+  background: white;
+}
+
+.place-option {
+  padding: 10px;
+}
+
+.place-option:hover {
+  background: black;
+  color: $white;
+}
+
+//::::::::::::::::::TRIP DETAIL:::::::::::::::::::::::::::::
+
+#trip-detail {
+
+}
+
+.trip-header {
+  background-image: image-url("capecorral.jpg");
+  background-size: cover;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.trip-header button {
+
+}
+
+.trip-header a {
+    background-color: $white;
+    border: none;
+    padding: 10px;
+    color: $purple;
+    margin: 0 5px;
+    opacity: 0.85;
+}
+
+.trip-header a:hover {
+  opacity: 1.0;
+}
+
+.getaway-nav {
+  position: absolute;
+  right: 20px;
+  top: 320px;
+}
+
+.profile-photo {
+  width: 200px;
+  height: 200px;
+  background-color: $white;
+  float: left;
+}
+
+#trip-detail h1, #trip-detail h2 {
+  color: $white;
+  font-weight: 200;
+}
+
+#trip-detail h1 {
+  font-size: 60px;
+  margin-bottom: 0;
+}
+
+.blank, .stayed, .ate, .played {
+  min-height: 200px;
+}
+
+.blank h3, .stayed h3, .ate h3, .played h3 {
+  font-weight: 200;
+  color: $white;
+  font-size: 48px;
+  padding-left: 20px;
+}
+
+.blank { min-width: 300px; }
+
+.stayed {
+  background-color: $dark-green;
+}
+
+.ate {
+  background-color: $red;
+}
+
+.played {
+  background-color: $yellow-dark;
+}
+
+.trip-info-detail {
+  float: left;
+  font-weight: 200;
+}
+
+#trip-info ul {
+  list-style: none;
+  padding: 40px;
+}
+
+.trip-info-list li {
+  color: $white;
+  display: block;
+}
+
+.trip-info-list li .activity-photo {
+  color: $white;
+  opacity: 0.6;
+}
+
+.trip-info-list li .activity-photo:hover {
+  opacity: 1;
+}
+
+.trip-info-list figure {
+  margin: 0;
+  display: inline-block;
+  background-color: $white;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.add-stayed, .add-restaurant, .add-activity {
+  width: 60px;
+  height: 60px;
+  background-color: $purple;
+  border-radius: 50%;
+  background-image: image-url("plus.svg");
+  transition: all 0.4s ease;
+  float: left;
+}
+
+.add-stayed:hover, .add-restaurant:hover, .add-activity:hover {
+  transform: rotate(90deg)!important;
+}
+
+.add-cta {
+  position: relative;
+  margin-left: 20px;
+  }
+
+.add-cta p {
+  font-weight: 200;
+  margin: 10px 0 0 20px;
+  float: left;
+  color: $white;
+  font-size: 28px;
+  }
+
+#add-stayed-form {
+  display: none;
+  color: $white;
+}
+
+.trip-story {
+  font-size: 18px;
+  padding: 80px;
+  line-height: 28px;
+}
+
+//::::::::::::::::::USER PROFILE:::::::::::::::::::::::::::::
+#user-profile {}
+#user-profile-header, #user-info {
+  padding-top: 60px;
+  padding-bottom: 30px;
+}
+#user-profile-header h1 {}
+#user-profile-header figure {
+  width: 200px;
+  height: 200px;
+  background-color: #ccc;
+}
+
+
+#user-profile-header form {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+
+#user-info { }
+
+#timeline {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 48px;
+  border-top: 1px solid #ccc;
+}
+
+#timeline h1 {
+  font-size: 72px;
+}
+
+// VERTICAL LINE
+#timeline::before {
+  content: '';
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  height: 100%;
+  width: 4px;
+  background: #ccc;
+  margin-left: -19px;
+}
+
+.log-trip {
+  position: relative;
+  left: 572px;
+}
+
+.timeline-image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 42px;
+  height: 42px
+}
+
+ .timeline-image img {
+  display: block;
+  position:relative;
+  left: 0;
+  top: 0;
+  margin-left: -38px;
+  margin-top: 0;
+}
+
+.timeline-content {
+  position: relative;
+  width: 45%;
+}
+
+.timeline-block {
+  position: relative;
+  margin: 32px 0;
+}
+
+.timeline-block:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.timeline-block:first-child {
+  margin-top: 0;
+}
+
+.timeline-block:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-date {
+  position: absolute;
+  width: 100%;
+  left: 115%;
+  top: 6px;
+}
+
+#timeline h3 {
+  margin: 0;
+}
+
+.timeline-block:nth-child(even) .timeline-content {
+  float: right;
+}
+
+.timeline-block:nth-child(even) .timeline-content .timeline-date {
+  left: auto;
+  right: 122%;
+  text-align: right;
+}
+
+#profile-modal {
+  background-color: $yellow-light;
+  color: $purple!important;
+  margin-top: 40px;
+  position: absolute;
+  top: 1%;
+  left: 10%;
+  margin-left: 250px;
+  margin-right: 250px;
+  width: 600px;
+  padding: 20px;
+}
+
+#profile-modal input.form-submit {
+  background: $red;
+  color: $white!important;
+  opacity: 0.85;
+  transition: all 0.4s ease;
+}
+
+#profile-modal input.form-submit:hover {
+  opacity: 1.0;
+}
+
+#activity-modal {
+  padding: 20px;
+  position: absolute;
+  top: 1%;
+  left: 10%;
+  width: 600px;
+  background-color: $dark-green;
+  color: $purple!important;
+  margin-top: 40px;
+  margin-left: 250px;
+  margin-right: 250px;
+}
+
+#activity-modal h1 {
+  text-weight: 200!important;
+}
+
+#activity-modal textarea { margin-left: 10px; }
+
+.btn-submit {
+  background-color: $yellow-light;
+  color: $purple!important;
+}
+
+.activity-name {
+  color: $white;
+}
+a.remove-activity {
+  color: $white;
+  background-color: $purple;
+  padding: 5px 10px;
+}
+
+.delete-wrapper {
+  display: block;
+  clear: both;
+  position: relative;
+  top: 10px;
+}
+
+.trip-info-list li {
+  border-top: 1px dotted rgba(255, 255, 255, 0.3);
+  padding-top: 20px;
+  margin-bottom:40px;
+}
+
+.trip-info-list li p {
+  font-size: 20px;
+}
+
+.activity-image {
+  display: block;
+  margin-right: 10px;
+}
+
+.activity-name {
+
+}
+
+//::::::::::::::::::USER FEED:::::::::::::::::::::::::::::
+#user-feed-bg {
+  min-height: 800px;
+  background-color: rgba(255, 255, 255, 0.4);
+  background-image: image-url("paris.jpg");
+  background-size: cover;
+  width: 100%;
+  z-index: -1;
+  position: fixed;
+  top: 0;
+
+}
+
+#user-feed {}
+#user-feed-header {
+  background: $red;
+}
+#user-feed-header h1 {
+  font-size: 60px;
+  color: $purple;
+}
+.log-trip-cta {
+  text-align: center;
+  color: $purple;
+  padding-bottom: 20px;
+}
+
+.feed-log-trip {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  background-color: $purple;
+  border-radius: 50%;
+  background-image: image-url("plus.svg");
+  transition: all 0.4s ease;
+}
+
+.feed-log-trip:hover {
+  transform: rotate(90deg)!important;
+}
+
+#feed {
+  background: $white;
+  opacity: 0.96;
+}
+.feed-content {
+
+}
+
+#feed ul {
+  list-style: none;
+}
+
+#feed li {
+  margin-bottom: 60px;
+}
+.feed-user-profile-photo {
+  width: 70px;
+  height: 70px;
+  background: $red;
+  float: left;
+  margin-right: 30px;
+}
+.feed-user-trip-details {}
+
+.feed-user-trip-details h3 {
+  padding-left: 30px;
+  font-size: 30px;
+  margin: 0;
+}
+
+.feed-user-trip-details h5 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.feed-user-trip-details a {
+  color: $red;
+}
+
+
+//::::::::::::::::::NEW GETAWAY:::::::::::::::::::::::::::::
+#log-getaway {
+  padding-top: 200px;
+  width: 100%;
+  height: 100%;
+  min-height: 800px;
+  background: $red;
+  text-align: center;
+}
+
+#log-getaway p {
+  font-weight: 200;
+  color: $white;
+  font-size: 72px;
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+#log-getaway input {
+  padding: 10px;
+  margin: 10px;
+  color: #999;
+  border: none;
+  width: 220px;
+}
+
+#log-getaway textarea {
+  width: 600px;
+  height: 200px;
+}
+
+#log-getaway h1 {
+  color: $white;
+  opacity: 0.7;
+}
+
+
+#new-getaway-date-form input {
+  margin: 20px;
+}
+
+
+#autocomplete:focus {
+
+  transition: width 0.4s ease;
+    border: none;outline: none;
+    box-shadow: none;
+    padding-left: 15px;
+    cursor: text;
+    width: 400px;
+    border-radius: auto;
+    background: rgb(235, 235, 235);
+    color: black;
+}
+
+#log-getaway .form-submit {
+  background-color: $yellow-light;
+  color: $purple!important;
+  margin-top: 40px;
+}
+
+#search-div input {
+  padding: 10px;
+  margin: 10px;
+  color: #999;
+  border: none;
+  width: 220px;
+}
+
+#getaway-comment-button {
+
+}

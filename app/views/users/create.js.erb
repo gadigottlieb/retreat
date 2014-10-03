@@ -1,0 +1,6 @@
+var errorsList = $('<ul>')
+$('#sign-up-modal h1').after(errorsList);
+
+<% @user.errors.full_messages.each do |message| %>
+  $('<li>').text('<%= j(message) %>').appendTo(errorsList);
+<% end %>

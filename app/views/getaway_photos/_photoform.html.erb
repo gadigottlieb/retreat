@@ -1,0 +1,5 @@
+<%= form_for photo, url: "/getaway_photos", :html => { :multipart => true }, remote: true, authenticity_token: true do |f| %>
+    <%= f.file_field :photo %>
+    <%= f.hidden_field :getaway_id, value: getaway.id %>
+    <%= f.submit 'Upload Photo' %>
+<% end %>

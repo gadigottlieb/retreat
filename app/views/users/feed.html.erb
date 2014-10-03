@@ -1,0 +1,56 @@
+    <div id="user-feed-bg"></div>
+
+    <section id="user-feed" class="container">
+      <header id="user-feed-header">
+        <div class="grid_3"><h1>Where have your friends been?</h1></div>
+        <div class="grid_1 log-trip-cta">
+          <h2>Log your own trip</h2>
+          <%= link_to(new_getaway_path) do %>
+            <div class="feed-log-trip"></div>
+          <% end %>
+        </div>
+      </header>
+
+        <% @friends.each do |friend| %>
+          <% friend.getaways.each do |getaway| %>
+            <div id="feed" class="grid_3">
+              <ul>
+                <li>
+                  <div class="feed-content">
+                    <div class="feed-user-profile-photo">
+                      <%= image_tag getaway.user.avatar.url %>
+                    </div>
+                    <div class="feed-user-trip-details">
+                      <h3>
+                        <%= getaway.user.first_name %>
+                        <%= getaway.user.last_name %>
+                      </h3>
+                      <h5>
+                          <%= getaway.city %>,
+                          <%= getaway.country %>
+                      </h5>
+                      <p>
+                        <%= getaway.comment %>
+                        <a href="/getaways/<%= getaway.id %>">Explore <%= getaway.user.first_name %>'s trip</a>
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
+    </section>
+
+    <div id="feed-utilities">
+      <div id="search-div">
+        <%= form_tag('/search_friends', remote: true, method: :get) do %>
+            <%= text_field_tag :search %>
+            <%= submit_tag 'Search Friends' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="modal">
+      <div id="feed-modal">
+    </div>

@@ -1,0 +1,5 @@
+<% photos.each do |photo| %>
+  <div class="getaway-photo" data-activityid="<%= activity.id %>" data-photoid="<%= photo.id %>">
+    <%= image_tag photo.photo.url %>
+  </div>
+<% end %>

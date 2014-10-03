@@ -1,0 +1,21 @@
+var activityModal = $('#activity-modal');
+
+activityModal.empty();
+activityModal.append('<button class="close">Close</button>');
+
+<% if @category == 'play' %>
+  activityModal.css('background', '#beb58a')
+<% elsif @category == 'stay' %>
+  activityModal.css('background', '#29666f')
+<% else @category == 'eat' %>
+  activityModal.css('background', '#ff3e4d')
+<% end %>
+
+activityModal.append('<%= j(render partial: "editform", locals: {getaway: @getaway}) %>');
+
+if (activityModal.find('.new-autocomplete').length === 0) {
+  activityModal.find('#autocomplete').replaceWith($('.new-autocomplete'));
+  $('.new-autocomplete').show();
+}
+
+$('.modal').show();

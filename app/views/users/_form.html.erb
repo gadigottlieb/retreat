@@ -1,0 +1,10 @@
+<%= form_for user, :html => { :multipart => true }, remote: true, authenticity_token: true do |f| %>
+  <%= f.text_field :first_name, placeholder: 'first name' %>
+  <%= f.text_field :last_name, placeholder: 'last name' %>
+  <%= f.text_field :email, placeholder: 'email' %>
+  <%= f.password_field :password, placeholder: 'password' %>
+  <%= f.password_field :password_confirmation, placeholder: 'password confirmation' %>
+  <%= f.file_field :avatar %>
+
+  <%= f.submit 'Submit', :class => "form-submit" %>
+<% end %>

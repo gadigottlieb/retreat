@@ -1,0 +1,40 @@
+
+<div id="<%=dom_id(user)%>" class="user">
+  <p class="name">
+    <%= image_tag user.avatar.url %>
+
+    <%= link_to user.first_name + ' ' + user.last_name, user_path(user) %>
+
+    <% if user.friend_requests.find_by(sender_id: current_user.id) %>
+
+      <p>Awaiting Approval</p>
+
+    <% elsif current_friend_request = current_user.friend_requests.find_by(sender_id: user.id) %>
+
+      <div id="accept-button">
+        <%= form_tag accept_friend_request_path(current_friend_request), method: :post, remote: true do %>
+          <%= hidden_field_tag 'friend_request_id', current_friend_request.id %>
+          <%= submit_tag "Accept Request" %>
+        <% end %>
+      </div>
+
+      <div id="deny-button">
+        <%= form_tag reject_friend_request_path(current_friend_request), method: :post, remote: true do %>
+          <%= hidden_field_tag 'friend_request_id', current_friend_request.id %>
+          <%= submit_tag "Deny Request" %>
+        <% end %>
+      </div>
+
+    <% elsif !user.friends.include?(current_user) && user != current_user %>
+
+      <%= form_tag friend_requests_path, method: :post, remote: true do %>
+        <%= hidden_field_tag "friend_request[user_id]", user.id  %>
+        <%= hidden_field_tag "friend_request[sender_id]", current_user.id %>
+        <div class='button'>
+          <%= submit_tag "Add Friend" %>
+        </div>
+      <% end %>
+
+    <% end %>
+  </p>
+</div>

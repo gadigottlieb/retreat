@@ -1,0 +1,5 @@
+$('.modal').hide();
+
+var getawayCommentButton = $('#getaway-comment-button');
+
+getawayCommentButton.replaceWith('<p class="trip-story"><%= @getaway.comment %></p>')

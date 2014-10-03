@@ -1,0 +1,13 @@
+var profileModalInner = $('#profile-modal')
+
+profileModalInner.empty();
+profileModalInner.append('<button class="close">close</button>');
+
+var deleteText = $('<div class="delete-text">Are you sure you want to delete your account? Your friends will miss you!</div>');
+profileModalInner.append(deleteText);
+var deleteButton = '<%= button_to "Delete", user_path(@user), method: :delete %>'
+
+profileModalInner.append(deleteButton);
+
+// show the modal using it's container
+$('.modal').show();

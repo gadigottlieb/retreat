@@ -1,0 +1,7 @@
+var activityModal = $('#activity-modal');
+
+activityModal.empty();
+activityModal.append('<button class="close">Close</button>');
+activityModal.append('<%= j(render partial: "getaways/choosedate", locals: {getaway: @getaway}) %>');
+
+$('.modal').show();

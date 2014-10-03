@@ -1,0 +1,46 @@
+<div class="modal">
+  <div id="profile-modal">
+  </div>
+</div>
+
+<section id="user-profile" class="container">
+  <header id="user-profile-header" class="grid_3">
+    <figure class="profile-photo"><%= image_tag @user.avatar.url %></figure>
+    <h1 id="user-name"><%= @user.first_name  %> <%= @user.last_name %></h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pulvinar lobortis imperdiet. Nam at mauris et justo mattis tempor sit amet vel augue. Integer vel ligula nec urna feugiat pulvinar. Phasellus congue tortor arcu, eu lobortis ligula tincidunt vitae. Mauris mollis urna ac elit condimentum volutpat.</p>
+
+    <% if current_user == @user %>
+      <a data-remote="true" href="<%= edit_user_path(@user) %>">
+        <button class="edit-profile-button">Edit Profile</button>
+      </a>
+      <a data-remote="true" href="<%= user_confirm_deletion_path(@user) %>">
+        <button class="delete-profile-button">Delete Profile</button>
+      </a>
+    <% end %>
+
+  </header>
+  <div id="user-info" class="grid_1">
+    <p id="user-email"><%= @user.email %></p>
+    <% if current_user == @user %>
+      <h2><%= link_to "My News Feed", user_feed_path(@user) %><h2>
+      <h2><%= link_to 'My Friends', user_friends_path(@user), remote: true %></h2>
+      <h2><%= link_to "Friend Requests (#{@user.friend_requests.count})", friend_requests_path, remote: true %></h2>
+    <% else %>
+      <h2><%= link_to 'Friends', user_friends_path(@user), remote: true %></h2>
+    <% end %>
+  </div>
+
+  <section id="timeline" class="grid_4">
+    <h1 id="user-trips-heading"><%= @user.first_name  %>'s trips</h1>
+
+    <% if current_user == @user %>
+      <button class="log-trip">Log a trip</button>
+    <% end %>
+
+    <% @user.getaways.order(departure_date: :desc).each do |getaway| %>
+      <%= render partial: 'timeline', locals: {getaway: getaway} %>
+    <% end %>
+
+  </section>
+
+</section>

@@ -1,0 +1,8 @@
+$('#sign-up-modal').empty();
+$('#user-auth-modal').hide();
+
+$('.modal').show();
+$('#sign-up-modal').append('<button class="close">Close</button>').append('<h1>Sign Up</h1>');
+$('#sign-up-modal').append('<%= j(render partial: "form", locals: {user: @user}) %>');
+
+$('#sign-up-modal').show();

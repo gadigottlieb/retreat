@@ -1,0 +1,10 @@
+<div class="timeline-block" data-id="<%= getaway.id %>">
+  <div class="timeline-image">
+    <%= image_tag "circle-purple.png" %>
+  </div>
+  <div class="timeline-content">
+    <h3><%= getaway.city %>, <%= getaway.country %></h3>
+    <p><%= getaway.comment %></p><button class="read-more">Read more</button>
+    <span class="timeline-date"><%= getaway.departure_date.strftime("%m.%Y") %></span>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+var profileModalInner = $('#profile-modal')
+
+profileModalInner.empty();
+profileModalInner.append('<button class="close">close</button>');
+
+var deleteFormHtml = '<%= j(render partial: "form", locals: {user: @user}) %>'
+
+profileModalInner.append(deleteFormHtml);
+
+// show the modal using it's container
+$('.modal').show();

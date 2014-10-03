@@ -1,0 +1,11 @@
+var activityModal = $('#activity-modal');
+var photosDiv = $('<div id="choose-getaway-photo">');
+
+activityModal.empty();
+activityModal.append('<button class="close">close</button>');
+
+activityModal.append('<h1>Choose a photo</h1>');
+activityModal.append(photosDiv);
+photosDiv.append('<%= j(render partial: "getaway_photos/photos", locals: {photos: @activity.getaway.getaway_photos, activity: @activity}) %>');
+
+$('.modal').show();

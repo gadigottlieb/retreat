@@ -1,0 +1,134 @@
+<section id="trip-detail" class="container">
+  <header data-randomphotourl="<%= @random_photo_url %>" class="grid_4 trip-header">
+    <figure class="profile-photo">
+      <%= image_tag @getaway.user.avatar.url %>
+    </figure>
+    <h1><%= @getaway.city %>, <%= @getaway.country %></h1>
+    <h2><%= @getaway.user.first_name %> <%= @getaway.user.last_name %></h2>
+
+    <div class="getaway-nav">
+      <% if @getaway.user != current_user %>
+        <a data-remote="true" href="<%= getaway_choose_date_path(@getaway) %>">
+          <button>Save as Itinerary</button>
+        </a>
+      <% end %>
+
+      <% if current_user.getaways.include?(@getaway) %>
+        <a data-remote="true" href="<%= new_getaway_getaway_photo_path(@getaway) %>">
+          Add Photo
+        </a>
+      <% end %>
+
+      <a data-remote="true" href="<%= getaway_getaway_photos_path(@getaway) %>">
+        View Photos
+      </a>
+
+    <% if current_user.getaways.include?(@getaway) %>
+      <a data-remote="true" href="<%= edit_getaway_path(@getaway) %>">
+        Edit Getaway
+      </a>
+    <% end %>
+
+    <% if current_user.getaways.include?(@getaway) %>
+      <%= link_to "Delete Getaway", getaway_path(@getaway), method: 'delete' %>
+    <% end %>
+
+      <% if @getaway.departure_date > Date.today %>
+        <h2>Departure: <%= @getaway.departure_date.strftime('%m.%d.%Y') %></h2>
+      <% else %>
+        <h2><%= @getaway.departure_date.strftime('%m.%Y') %></h2>
+      <% end %>
+    </div>
+  </header>
+
+  <section id="trip-info">
+    <div class="grid_4">
+      <% if @getaway.comment %>
+        <p class="trip-story"><%= @getaway.comment %></p>
+      <% elsif !current_user.getaways.include?(@getaway) %>
+        <p class="trip-story"><%= @getaway.user.first_name %> has not commented yet.</p>
+      <% else %>
+        <div id="getaway-comment-button">
+          <a data-remote="true" href="<%= getaway_add_comment_path(@getaway) %>">
+            <button name="button">What do you have to say?</button>
+          </a>
+        </div>
+      <% end %>
+    </div>
+    <div class="grid_3_1_first omega stayed">
+      <% if @getaway.departure_date > Date.today %>
+        <h3>Places to stay.</h3>
+      <% else %>
+        <h3>Where I stayed.</h3>
+      <% end %>
+      <% if current_user.getaways.include?(@getaway) %>
+        <div class="add-cta">
+          <a data-remote="true" href="<%= getaway_new_activity_path(@getaway.id, 'stay') %>">
+            <div class="add-stayed"></div>
+          </a>
+          <p>Add a place</p>
+        </div>
+      <% end %>
+      <div style="clear: both;"></div>
+
+      <ul class="trip-info-list">
+        <% @stay_activities.each do |activity| %>
+          <%= render partial: 'activities/activity', locals: {getaway: @getaway, activity: activity} %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="grid_3_1 alpha omega ate">
+      <% if @getaway.departure_date > Date.today %>
+        <h3>Places to eat.</h3>
+      <% else %>
+        <h3>Where I ate.</h3>
+      <% end %>
+
+      <% if current_user.getaways.include?(@getaway) %>
+        <div class="add-cta">
+          <a data-remote="true" href="<%= getaway_new_activity_path(@getaway.id, 'eat') %>">
+            <div class="add-restaurant"></div>
+          </a>
+          <p>Add a restaurant</p>
+        </div>
+      <% end %>
+
+      <div style="clear: both;"></div>
+      <ul class="trip-info-list">
+        <% @eat_activities.each do |activity| %>
+          <%= render partial: 'activities/activity', locals: {getaway: @getaway, activity: activity} %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="grid_3_1_last alpha played">
+      <% if @getaway.departure_date > Date.today %>
+        <h3>Things to do.</h3>
+      <% else %>
+        <h3>Where I played.</h3>
+      <% end %>
+
+      <% if current_user.getaways.include?(@getaway) %>
+        <div class="add-cta">
+          <a data-remote="true" href="<%= getaway_new_activity_path(@getaway.id, 'play') %>">
+            <div class="add-activity"></div>
+          </a>
+          <p>Add a activity</p>
+        </div>
+      <% end %>
+
+      <div style="clear: both;"></div>
+      <ul class="trip-info-list">
+        <% @play_activities.each do |activity| %>
+          <%= render partial: 'activities/activity', locals: {getaway: @getaway, activity: activity} %>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+</section>
+
+<div class="modal">
+  <div id="activity-modal">
+  </div>
+</div>
+<input style="display: none" class="new-autocomplete" id="autocomplete" name="autocomplete" placeholder="Where did you go?" type="text">

@@ -1,0 +1,17 @@
+<%= text_field_tag 'autocomplete', nil, placeholder: 'Where did you go?' %>
+
+<%= form_tag getaway_path(getaway), id: 'new-getaway-date-form', method: :put do %>
+  <div id="departure-date-div">
+    <%= date_field :getaway, :departure_date, value: Date.today %>
+  </div>
+
+  <div id="comment-div">
+    <%= text_area_tag 'getaway[comment]', nil, placeholder: 'What do you have to say?' %>
+  </div>
+
+  <%= hidden_field_tag 'getaway[user_id]', current_user.id %>
+
+<% end %>
+
+<h1 id="date-placeholder">When did you go?</h1>
+<h1 id="comment-placeholder">What do you have to say?</h1>

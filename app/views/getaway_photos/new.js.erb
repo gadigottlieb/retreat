@@ -1,0 +1,7 @@
+var activityModal = $('#activity-modal');
+
+activityModal.empty();
+activityModal.append('<button class="close">close</button>');
+activityModal.append('<%= j(render partial: "getaway_photos/photoform", locals: {getaway: @getaway, photo: @photo}) %>');
+
+$('.modal').show();

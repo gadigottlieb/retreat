@@ -1,0 +1,5 @@
+console.log(<%= @friend_request.user_id %>)
+var approved = $('<div class="approved">Awaiting Approval</div>');
+var addFriend = $('#user_' + <%= @friend_request.user_id %>);
+addFriend.find('.button').remove();
+addFriend.append(approved);

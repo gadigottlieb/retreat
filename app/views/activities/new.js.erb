@@ -1,0 +1,16 @@
+var activityModal = $('#activity-modal');
+
+activityModal.empty();
+activityModal.append('<button class="close">close</button>');
+
+<% if @category == 'play' %>
+  activityModal.css('background', '#beb58a')
+<% elsif @category == 'stay' %>
+  activityModal.css('background', '#29666f')
+<% else @category == 'eat' %>
+  activityModal.css('background', '#ff3e4d')
+<% end %>
+
+activityModal.append('<%= j(render partial: "activities/form", locals: {category: @category, getaway_id: @getaway_id, question: @question}) %>')
+
+$('.modal').show();

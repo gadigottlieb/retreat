@@ -1,0 +1,7 @@
+<%= form_tag activities_path, method: :post, :class => 'activities-form', remote: true do %>
+  <%= hidden_field_tag 'activity[category]', category %>
+  <%= hidden_field_tag 'activity[getaway_id]', getaway_id %>
+  <%= text_field_tag 'activity[name]', nil, placeholder: question %>
+  <%= text_area_tag 'activity[comment]', nil, placeholder: 'What do you have to say?', size: '60x12' %>
+  <%= submit_tag 'Add', :class => 'btn-submit' %>
+<% end %>

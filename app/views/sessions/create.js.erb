@@ -1,0 +1,10 @@
+var errorsList = $('<ul id="errors">')
+$('#user-auth-modal h1').after(errorsList);
+
+<% if @user %>
+  <% @user.errors.full_messages.each do |message| %>
+    $('<li>').text(message).appendTo(errorsList);
+  <% end %>
+<% else %>
+  $('<li>').text('That email is not registered').appendTo(errorsList);
+<% end %>

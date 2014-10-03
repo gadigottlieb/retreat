@@ -1,0 +1,16 @@
+var profileModal = $('#profile-modal')
+var friends = '';
+
+profileModal.empty();
+profileModal.append('<button class="close">close</button>');
+
+<% @friends.each do |friend| %>
+  friends += '<%= j(render partial: "user", locals: {user: friend}) %>';
+<% end %>
+
+if (!friends) {
+  friends = 'You don\'t have any friends';
+}
+
+profileModal.append(friends);
+$('.modal').show();
